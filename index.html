@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,40 +7,96 @@
 <meta name="description" content="Нейросети и AI-инструменты простыми словами. Гайды, подборки, фишки." />
 <meta property="og:title" content="Ai Factory" />
 <meta property="og:description" content="Нейросети и AI-инструменты простыми словами." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{ --bg:#0b0e14; --card:#141a24; --line:#222c3a; --txt:#eef3f8; --muted:#93a0b2; --green:#A3E635; }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:radial-gradient(1200px 600px at 50% -10%, #15203020, transparent), var(--bg);color:var(--txt);
-       font-family:-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;display:flex;justify-content:center;}
-  .wrap{width:100%;max-width:440px;padding:48px 22px 40px;text-align:center;}
-  .logo{width:96px;height:96px;border-radius:26px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;
-        background:linear-gradient(145deg,#1c2735,#0e141d);border:1px solid var(--line);
-        font-weight:900;font-size:38px;color:var(--green);box-shadow:0 12px 40px #0008;}
-  h1{font-size:26px;font-weight:800;letter-spacing:-0.5px;}
-  .tag{color:var(--muted);font-size:15px;margin:8px 0 28px;line-height:1.5;}
-  a.btn{display:flex;align-items:center;gap:14px;width:100%;padding:17px 20px;margin:12px 0;border-radius:16px;
-        background:var(--card);border:1px solid var(--line);color:var(--txt);text-decoration:none;font-size:17px;font-weight:700;
-        transition:transform .12s ease, border-color .12s ease;}
-  a.btn:active{transform:scale(.98);}
-  a.btn .ico{font-size:22px;width:26px;text-align:center;}
-  a.btn .arr{margin-left:auto;color:var(--muted);font-weight:400;}
-  a.tg{background:linear-gradient(135deg,#2aa3e6,#1c84c6);border-color:#2aa3e6;color:#fff;}
-  a.tg .arr{color:#ffffffcc;}
-  a.yt:hover{border-color:#ff4d4f;} a.ig:hover{border-color:#e879f9;}
-  .foot{color:var(--muted);font-size:12px;margin-top:30px;line-height:1.6;}
+  :root{
+    --bg:#070708; --bg2:#0d0e11; --card:rgba(255,255,255,.04); --card-brd:rgba(255,255,255,.09);
+    --txt:#f4f6f8; --muted:#8b93a0; --lime:#bfff3c; --lime-ink:#0a0c05;
+    --glow:rgba(191,255,60,.16); --shadow:0 20px 60px rgba(0,0,0,.55);
+  }
+  :root[data-theme="light"]{
+    --bg:#f3f4f6; --bg2:#ffffff; --card:rgba(10,12,16,.03); --card-brd:rgba(10,12,16,.10);
+    --txt:#0c0e12; --muted:#5b6472; --lime:#5ea800; --lime-ink:#ffffff;
+    --glow:rgba(94,168,0,.14); --shadow:0 18px 50px rgba(20,30,50,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{
+    background:
+      radial-gradient(900px 520px at 18% -8%, var(--glow), transparent 60%),
+      radial-gradient(760px 520px at 110% 12%, rgba(120,90,255,.10), transparent 55%),
+      var(--bg);
+    color:var(--txt);font-family:Inter,-apple-system,Segoe UI,Roboto,sans-serif;
+    min-height:100svh;display:flex;justify-content:center;transition:background .4s,color .4s;
+  }
+  .wrap{width:100%;max-width:468px;padding:34px 22px 44px;text-align:center;position:relative;}
+  .theme{position:absolute;top:26px;right:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--card-brd);
+    background:var(--card);color:var(--txt);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(8px);transition:transform .15s,border-color .2s;}
+  .theme:hover{transform:rotate(20deg) scale(1.06);border-color:var(--lime);}
+  .logo{width:92px;height:92px;border-radius:24px;margin:54px auto 22px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,#15171c,#0a0b0d);border:1px solid var(--card-brd);box-shadow:var(--shadow), 0 0 0 6px var(--glow);}
+  :root[data-theme="light"] .logo{background:linear-gradient(150deg,#fff,#eef0f3);}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1.05;}
+  h1 .mark{color:var(--lime);}
+  .tag{color:var(--muted);font-size:15.5px;margin:12px auto 30px;line-height:1.55;max-width:330px;}
+  .links{display:flex;flex-direction:column;gap:13px;}
+  a.btn{display:flex;align-items:center;gap:15px;padding:17px 20px;border-radius:18px;text-decoration:none;
+    background:var(--card);border:1px solid var(--card-brd);color:var(--txt);font-weight:600;font-size:16.5px;
+    backdrop-filter:blur(10px);box-shadow:var(--shadow);transition:transform .14s ease,border-color .2s,box-shadow .2s;}
+  a.btn:hover{transform:translateY(-3px);border-color:var(--lime);box-shadow:var(--shadow),0 0 30px var(--glow);}
+  a.btn:active{transform:translateY(-1px) scale(.99);}
+  a.btn svg{width:24px;height:24px;flex:0 0 24px;}
+  a.btn .arr{margin-left:auto;color:var(--muted);font-size:20px;transition:transform .14s;}
+  a.btn:hover .arr{transform:translateX(4px);color:var(--lime);}
+  a.primary{background:linear-gradient(135deg,var(--lime),#8fd400);color:var(--lime-ink);border-color:transparent;}
+  a.primary .arr{color:var(--lime-ink);} a.primary svg{color:var(--lime-ink);}
+  .foot{color:var(--muted);font-size:12px;margin-top:32px;line-height:1.7;}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border:1px solid var(--card-brd);border-radius:20px;font-size:11.5px;color:var(--muted);}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="logo">AI</div>
-    <h1>Ai Factory</h1>
-    <div class="tag">🏭 Тестирую нейросети за тебя.<br>Что реально работает — простыми словами.</div>
+    <button class="theme" id="theme" aria-label="Сменить тему">🌙</button>
 
-    <a class="btn tg" href="https://t.me/aifactorygb"><span class="ico">📲</span> Telegram-канал <span class="arr">→</span></a>
-    <a class="btn yt" href="https://youtube.com/@aifactorygb"><span class="ico">▶️</span> YouTube <span class="arr">→</span></a>
-    <a class="btn ig" href="https://instagram.com/aifactorygb"><span class="ico">📸</span> Instagram <span class="arr">→</span></a>
+    <div class="logo">
+      <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+        <path d="M7 41V22l9-5v6l9-5v6l9-5v22z" fill="var(--lime)"/>
+        <rect x="13" y="30" width="4" height="7" rx="1" fill="#0a0b0d"/>
+        <rect x="22" y="30" width="4" height="7" rx="1" fill="#0a0b0d"/>
+        <rect x="31" y="30" width="4" height="7" rx="1" fill="#0a0b0d"/>
+        <circle cx="33" cy="11" r="3" fill="var(--lime)"/><circle cx="40" cy="15" r="2" fill="var(--lime)"/>
+      </svg>
+    </div>
 
-    <div class="foot">🤖 Контент создаётся с помощью нейросетей<br>© Ai Factory</div>
+    <h1>Ai <span class="mark">Factory</span></h1>
+    <div class="tag">Тестирую нейросети за тебя. Что реально работает — простыми словами.</div>
+
+    <div class="links">
+      <a class="btn primary" href="https://t.me/aifactorygb">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.7 13.6l-4.8-1.5c-1-.3-1-1 .2-1.5l18.7-7.2c.9-.3 1.6.2 1.3 1z"/></svg>
+        Telegram-канал <span class="arr">→</span>
+      </a>
+      <a class="btn" href="https://youtube.com/@aifactorygb">
+        <svg viewBox="0 0 24 24" fill="#ff3d3d"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5A3 3 0 0 0 23 16.5 31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3z"/></svg>
+        YouTube <span class="arr">→</span>
+      </a>
+      <a class="btn" href="https://instagram.com/aifactorygb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#e879f9" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e879f9" stroke="none"/></svg>
+        Instagram <span class="arr">→</span>
+      </a>
+    </div>
+
+    <div class="foot">
+      <span class="chip">🤖 Контент создаётся нейросетями</span><br><br>© Ai Factory · 2026
+    </div>
   </div>
+<script>
+  const root=document.documentElement, btn=document.getElementById('theme');
+  const set=t=>{root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'🌙':'☀️';localStorage.setItem('theme',t);};
+  set(localStorage.getItem('theme')|| (matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
+  btn.onclick=()=>set(root.getAttribute('data-theme')==='dark'?'light':'dark');
+</script>
 </body>
 </html>
