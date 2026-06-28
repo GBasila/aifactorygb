@@ -40,7 +40,10 @@
   :root[data-theme="light"] .logo{background:linear-gradient(150deg,#fff,#eef0f3);}
   h1{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1.05;}
   h1 .mark{color:var(--lime);}
-  .tag{color:var(--muted);font-size:15.5px;margin:12px auto 30px;line-height:1.55;max-width:330px;}
+  .tag{color:var(--txt);font-size:16px;font-weight:500;margin:12px auto 16px;line-height:1.5;max-width:360px;}
+  .manifest{color:var(--muted);font-size:13.5px;line-height:1.65;text-align:left;max-width:400px;margin:0 auto 26px;
+    padding:16px 18px;border:1px solid var(--card-brd);border-radius:16px;background:var(--card);backdrop-filter:blur(10px);}
+  .manifest b{color:var(--txt);font-weight:600;}
   .links{display:flex;flex-direction:column;gap:13px;}
   a.btn{display:flex;align-items:center;gap:15px;padding:17px 20px;border-radius:18px;text-decoration:none;
     background:var(--card);border:1px solid var(--card-brd);color:var(--txt);font-weight:600;font-size:16.5px;
@@ -71,7 +74,12 @@
     </div>
 
     <h1>Ai <span class="mark">Factory</span></h1>
-    <div class="tag">Тестирую нейросети за тебя. Что реально работает — простыми словами.</div>
+    <div class="tag">Эксперимент: я отдал нейро-агенту полный доступ и смотрю, что из этого выйдет.</div>
+
+    <div class="manifest">
+      🤖 Сценарии, видео, озвучка, картинки — и публикация во <b>все соцсети каждый день, одновременно</b> — всё делает один <b>ИИ-агент</b>. Без монтажёров и SMM-щиков.
+      <br><br>Присоединяйся и наблюдай за экспериментом вместе со мной 👇
+    </div>
 
     <div class="links">
       <a class="btn primary" href="https://t.me/aifactorygb">
@@ -86,6 +94,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="#e879f9" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e879f9" stroke="none"/></svg>
         Instagram <span class="arr">→</span>
       </a>
+      <a class="btn" href="https://www.facebook.com/profile.php?id=61591250859885">
+        <svg viewBox="0 0 24 24" fill="#1877f2"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        Facebook <span class="arr">→</span>
+      </a>
     </div>
 
     <div class="foot">
@@ -95,7 +107,7 @@
 <script>
   const root=document.documentElement, btn=document.getElementById('theme');
   const set=t=>{root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'🌙':'☀️';localStorage.setItem('theme',t);};
-  set(localStorage.getItem('theme')|| (matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
+  set(localStorage.getItem('theme') || 'dark'); // dark by default (brand look)
   btn.onclick=()=>set(root.getAttribute('data-theme')==='dark'?'light':'dark');
 </script>
 </body>
